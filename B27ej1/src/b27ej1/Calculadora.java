@@ -6,18 +6,30 @@
 package b27ej1;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
  * @author quique
  */
-public class Calculadora extends javax.swing.JFrame {
+public class Calculadora extends javax.swing.JFrame implements ActionListener {
 
     /**
      * Creates new form Calculadora
      */
     public Calculadora() {
         initComponents();
+
+        bo0.addActionListener(this);
+        bo1.addActionListener(this);
+        bo2.addActionListener(this);
+        bo3.addActionListener(this);
+        bo4.addActionListener(this);
+        bo5.addActionListener(this);
+        bo6.addActionListener(this);
+        bo7.addActionListener(this);
+        bo8.addActionListener(this);
+        bo9.addActionListener(this);
     }
 
     /**
@@ -100,74 +112,24 @@ public class Calculadora extends javax.swing.JFrame {
         });
 
         bo1.setText("1");
-        bo1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bo1ActionPerformed(evt);
-            }
-        });
 
         bo2.setText("2");
-        bo2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bo2ActionPerformed(evt);
-            }
-        });
 
         bo3.setText("3");
-        bo3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bo3ActionPerformed(evt);
-            }
-        });
 
         bo4.setText("4");
-        bo4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bo4ActionPerformed(evt);
-            }
-        });
 
         bo5.setText("5");
-        bo5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bo5ActionPerformed(evt);
-            }
-        });
 
         bo6.setText("6");
-        bo6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bo6ActionPerformed(evt);
-            }
-        });
 
         bo7.setText("7");
-        bo7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bo7ActionPerformed(evt);
-            }
-        });
 
         bo8.setText("8");
-        bo8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bo8ActionPerformed(evt);
-            }
-        });
 
         bo9.setText("9");
-        bo9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bo9ActionPerformed(evt);
-            }
-        });
 
         bo0.setText("0");
-        bo0.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bo0ActionPerformed(evt);
-            }
-        });
 
         bopunto.setText(".");
         bopunto.addActionListener(new java.awt.event.ActionListener() {
@@ -279,66 +241,6 @@ public class Calculadora extends javax.swing.JFrame {
     String operacion, result, bot;
     int m = 0, op = 0;
 
-
-    private void bo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bo1ActionPerformed
-        bot = "1";
-        nbotonpuls = nbotonpuls + bot;
-        this.texto.setText(nbotonpuls);
-    }//GEN-LAST:event_bo1ActionPerformed
-
-    private void bo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bo2ActionPerformed
-        bot = "2";
-        nbotonpuls = nbotonpuls + bot;
-        this.texto.setText(nbotonpuls);
-    }//GEN-LAST:event_bo2ActionPerformed
-
-    private void bo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bo3ActionPerformed
-        bot = "3";
-        nbotonpuls = nbotonpuls + bot;
-        this.texto.setText(nbotonpuls);
-    }//GEN-LAST:event_bo3ActionPerformed
-
-    private void bo4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bo4ActionPerformed
-        bot = "4";
-        nbotonpuls = nbotonpuls + bot;
-        this.texto.setText(nbotonpuls);
-    }//GEN-LAST:event_bo4ActionPerformed
-
-    private void bo5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bo5ActionPerformed
-        bot = "5";
-        nbotonpuls = nbotonpuls + bot;
-        this.texto.setText(nbotonpuls);
-    }//GEN-LAST:event_bo5ActionPerformed
-
-    private void bo6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bo6ActionPerformed
-        bot = "6";
-        nbotonpuls = nbotonpuls + bot;
-        this.texto.setText(nbotonpuls);
-    }//GEN-LAST:event_bo6ActionPerformed
-
-    private void bo7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bo7ActionPerformed
-        bot = "7";
-        nbotonpuls = nbotonpuls + bot;
-        this.texto.setText(nbotonpuls);
-    }//GEN-LAST:event_bo7ActionPerformed
-
-    private void bo8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bo8ActionPerformed
-        bot = "8";
-        nbotonpuls = nbotonpuls + bot;
-        this.texto.setText(nbotonpuls);
-    }//GEN-LAST:event_bo8ActionPerformed
-
-    private void bo9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bo9ActionPerformed
-        bot = "9";
-        nbotonpuls = nbotonpuls + bot;
-        this.texto.setText(nbotonpuls);
-    }//GEN-LAST:event_bo9ActionPerformed
-
-    private void bo0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bo0ActionPerformed
-        bot = "0";
-        nbotonpuls = nbotonpuls + bot;
-        this.texto.setText(nbotonpuls);
-    }//GEN-LAST:event_bo0ActionPerformed
 
     private void borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarActionPerformed
         nbotonpuls = "";
@@ -453,6 +355,19 @@ public class Calculadora extends javax.swing.JFrame {
     public javax.swing.JTextField texto;
     // End of variables declaration//GEN-END:variables
 
+    public void botonesActionPerformed(java.awt.event.ActionEvent evt) {
+
+        Object ev = evt.getSource();
+
+        if (ev.equals(bo1)) {
+
+            bot = "1";
+            nbotonpuls = nbotonpuls + bot;
+            this.texto.setText(nbotonpuls);
+        }
+
+    }
+
     public void operacionesCalc() {
 
         if (m == 0) {
@@ -483,5 +398,55 @@ public class Calculadora extends javax.swing.JFrame {
                     break;
             }
         }
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+
+        Object ev = ae.getSource();
+
+        if (ev.equals(bo1)) {
+
+            bot = "1";
+            nbotonpuls = nbotonpuls + bot;
+            this.texto.setText(nbotonpuls);
+        } else if (ev.equals(bo2)) {
+            bot = "2";
+            nbotonpuls = nbotonpuls + bot;
+            this.texto.setText(nbotonpuls);
+        } else if (ev.equals(bo3)) {
+            bot = "3";
+            nbotonpuls = nbotonpuls + bot;
+            this.texto.setText(nbotonpuls);
+        } else if (ev.equals(bo4)) {
+            bot = "4";
+            nbotonpuls = nbotonpuls + bot;
+            this.texto.setText(nbotonpuls);
+        } else if (ev.equals(bo5)) {
+            bot = "5";
+            nbotonpuls = nbotonpuls + bot;
+            this.texto.setText(nbotonpuls);
+        } else if (ev.equals(bo6)) {
+            bot = "6";
+            nbotonpuls = nbotonpuls + bot;
+            this.texto.setText(nbotonpuls);
+        } else if (ev.equals(bo7)) {
+            bot = "7";
+            nbotonpuls = nbotonpuls + bot;
+            this.texto.setText(nbotonpuls);
+        } else if (ev.equals(bo8)) {
+            bot = "8";
+            nbotonpuls = nbotonpuls + bot;
+            this.texto.setText(nbotonpuls);
+        } else if (ev.equals(bo9)) {
+            bot = "9";
+            nbotonpuls = nbotonpuls + bot;
+            this.texto.setText(nbotonpuls);
+        } else if (ev.equals(bo0)) {
+            bot = "0";
+            nbotonpuls = nbotonpuls + bot;
+            this.texto.setText(nbotonpuls);
+        }
+
     }
 }

@@ -275,146 +275,124 @@ public class Calculadora extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    String completo = "";
-    String bot;
-    String operacion;
-    boolean sum, rest, mult, div;
+    String nbotonpuls = "";
+    String operacion, result, bot;
+    int m = 0, op = 0;
 
 
     private void bo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bo1ActionPerformed
         bot = "1";
-        completo = completo + bot;
-        this.texto.setText(completo);
+        nbotonpuls = nbotonpuls + bot;
+        this.texto.setText(nbotonpuls);
     }//GEN-LAST:event_bo1ActionPerformed
 
     private void bo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bo2ActionPerformed
         bot = "2";
-        completo = completo + bot;
-        this.texto.setText(completo);
+        nbotonpuls = nbotonpuls + bot;
+        this.texto.setText(nbotonpuls);
     }//GEN-LAST:event_bo2ActionPerformed
 
     private void bo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bo3ActionPerformed
         bot = "3";
-        completo = completo + bot;
-        this.texto.setText(completo);
+        nbotonpuls = nbotonpuls + bot;
+        this.texto.setText(nbotonpuls);
     }//GEN-LAST:event_bo3ActionPerformed
 
     private void bo4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bo4ActionPerformed
         bot = "4";
-        completo = completo + bot;
-        this.texto.setText(completo);
+        nbotonpuls = nbotonpuls + bot;
+        this.texto.setText(nbotonpuls);
     }//GEN-LAST:event_bo4ActionPerformed
 
     private void bo5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bo5ActionPerformed
         bot = "5";
-        completo = completo + bot;
-        this.texto.setText(completo);
+        nbotonpuls = nbotonpuls + bot;
+        this.texto.setText(nbotonpuls);
     }//GEN-LAST:event_bo5ActionPerformed
 
     private void bo6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bo6ActionPerformed
         bot = "6";
-        completo = completo + bot;
-        this.texto.setText(completo);
+        nbotonpuls = nbotonpuls + bot;
+        this.texto.setText(nbotonpuls);
     }//GEN-LAST:event_bo6ActionPerformed
 
     private void bo7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bo7ActionPerformed
         bot = "7";
-        completo = completo + bot;
-        this.texto.setText(completo);
+        nbotonpuls = nbotonpuls + bot;
+        this.texto.setText(nbotonpuls);
     }//GEN-LAST:event_bo7ActionPerformed
 
     private void bo8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bo8ActionPerformed
         bot = "8";
-        completo = completo + bot;
-        this.texto.setText(completo);
+        nbotonpuls = nbotonpuls + bot;
+        this.texto.setText(nbotonpuls);
     }//GEN-LAST:event_bo8ActionPerformed
 
     private void bo9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bo9ActionPerformed
-
         bot = "9";
-        completo = completo + bot;
-        this.texto.setText(completo);
+        nbotonpuls = nbotonpuls + bot;
+        this.texto.setText(nbotonpuls);
     }//GEN-LAST:event_bo9ActionPerformed
 
     private void bo0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bo0ActionPerformed
-
         bot = "0";
-        completo = completo + bot;
-        this.texto.setText(completo);
+        nbotonpuls = nbotonpuls + bot;
+        this.texto.setText(nbotonpuls);
     }//GEN-LAST:event_bo0ActionPerformed
 
     private void borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarActionPerformed
-        completo = "";
+        nbotonpuls = "";
         this.texto.setText(null);
         this.jLabel1.setText(null);
+        m = 0;
     }//GEN-LAST:event_borrarActionPerformed
 
     private void bosumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bosumaActionPerformed
-
-        this.jLabel1.setText("+");
-        rest = false;
-        div = false;
-        mult = false;
         this.texto.setText(null);
-        sum = true;
-        operacion = completo;
-        completo = "";
+        this.jLabel1.setText("+");
+        operacionesCalc();
+        op = 0;
+        nbotonpuls = "";
+        m++;
     }//GEN-LAST:event_bosumaActionPerformed
 
     private void borestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borestaActionPerformed
-
-                this.jLabel1.setText("-");
-        sum = false;
-        div = false;
-        mult = false;
         this.texto.setText(null);
-        rest = true;
-        operacion = completo;
-        completo = "";
+        this.jLabel1.setText("-");
+        operacionesCalc();
+        op = 1;
+        nbotonpuls = "";
+        m++;
     }//GEN-LAST:event_borestaActionPerformed
 
     private void bomultiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bomultiActionPerformed
-
-                this.jLabel1.setText("*");
-        sum = false;
-        rest = false;
-        div = false;
         this.texto.setText(null);
-        mult = true;
-        operacion = completo;
-        completo = "";
+        this.jLabel1.setText("*");
+        operacionesCalc();
+        op = 2;
+        nbotonpuls = "";
+        m++;
     }//GEN-LAST:event_bomultiActionPerformed
 
     private void bodiviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bodiviActionPerformed
-
-                this.jLabel1.setText("/");
-        sum = false;
-        rest = false;
-        mult = false;
         this.texto.setText(null);
-        div = true;
-        operacion = completo;
-        completo = "";
+        this.jLabel1.setText("/");
+        operacionesCalc();
+        op = 3;
+        nbotonpuls = "";
+        m++;
 
     }//GEN-LAST:event_bodiviActionPerformed
 
     private void boigualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boigualActionPerformed
-
-        if (sum == true) {
-            this.texto.setText(String.valueOf((Float.parseFloat(operacion) + Float.parseFloat(completo))));
-        } else if (rest == true) {
-            this.texto.setText(String.valueOf((Float.parseFloat(operacion) - Float.parseFloat(completo))));
-        } else if (mult == true) {
-            this.texto.setText(String.valueOf((Float.parseFloat(operacion) * Float.parseFloat(completo))));
-        } else if (div == true) {
-            this.texto.setText(String.valueOf((Float.parseFloat(operacion) / Float.parseFloat(completo))));
-        }
+        operacionesCalc();
+        operacion = result;
     }//GEN-LAST:event_boigualActionPerformed
 
     private void bopuntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bopuntoActionPerformed
         bot = ".";
-        completo = completo + bot;
-        this.texto.setText(completo);
+        nbotonpuls = nbotonpuls + bot;
+        this.texto.setText(nbotonpuls);
     }//GEN-LAST:event_bopuntoActionPerformed
 
     /**
@@ -475,13 +453,35 @@ public class Calculadora extends javax.swing.JFrame {
     public javax.swing.JTextField texto;
     // End of variables declaration//GEN-END:variables
 
-    public void botonesActionPerformed(ActionEvent e) {
+    public void operacionesCalc() {
 
-        Object boton = e.getSource();
+        if (m == 0) {
+            operacion = nbotonpuls;
+        } else {
 
-        if (boton.equals(bo1)) {
-
+            switch (op) {
+                case 0:
+                    operacion = String.valueOf((Float.parseFloat(operacion) + Float.parseFloat(nbotonpuls)));
+                    this.texto.setText(operacion);
+                    break;
+                case 1:
+                    operacion = String.valueOf((Float.parseFloat(operacion) - Float.parseFloat(nbotonpuls)));
+                    this.texto.setText(operacion);
+                    break;
+                case 2:
+                    m++;
+                    result = String.valueOf((Float.parseFloat(operacion) * Float.parseFloat(nbotonpuls)));
+                    this.texto.setText(result);
+                    break;
+                case 3:
+                    m++;
+                    result = String.valueOf((Float.parseFloat(operacion) / Float.parseFloat(nbotonpuls)));
+                    this.texto.setText(result);
+                    break;
+                default:
+                    System.out.println("Error");
+                    break;
+            }
         }
     }
-
 }

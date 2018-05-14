@@ -20,17 +20,12 @@ public class B30ej1 {
      */
     public static void main(String[] args) {
 
-        SeleccionFutbol entrenador;
-        SeleccionFutbol futbolista;
-        SeleccionFutbol masajista;
-        SeleccionFutbol seleccionador;
-
         List<SeleccionFutbol> seleccion = new ArrayList<SeleccionFutbol>();
 
-        seleccion.add((entrenador = new Entrenador(1, "Pepe", "Lopez", 35, 0054)));
-        seleccion.add((futbolista = new Futbolista(2, "Juan", "Sanchez", 24, 6, "Delantero")));
-        seleccion.add((masajista = new Masajista(3, "Wanda", "Cosmo", 45, "Doctor", 30)));
-        seleccion.add((seleccionador = new Seleccionador(4, "Lola", "Lopez", 36)));
+        seleccion.add(new Entrenador(1, "Pepe", "Lopez", 35, 0054));
+        seleccion.add(new Futbolista(2, "Juan", "Sanchez", 24, 6, "Delantero"));
+        seleccion.add(new Masajista(3, "Wanda", "Cosmo", 45, "Doctor", 30));
+        seleccion.add(new Seleccionador(4, "Lola", "Lopez", 36));
       
         for (SeleccionFutbol sel : seleccion) {
             JOptionPane.showMessageDialog(null, sel.toString());

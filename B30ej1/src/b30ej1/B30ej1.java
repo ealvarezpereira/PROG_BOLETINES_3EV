@@ -7,6 +7,7 @@ package b30ej1;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,13 +31,13 @@ public class B30ej1 {
         seleccion.add((futbolista = new Futbolista(2, "Juan", "Sanchez", 24, 6, "Delantero")));
         seleccion.add((masajista = new Masajista(3, "Wanda", "Cosmo", 45, "Doctor", 30)));
         seleccion.add((seleccionador = new Seleccionador(4, "Lola", "Lopez", 36)));
-
-        for (int i = 0; i < seleccion.size(); i++) {
-            seleccion.get(i).concentrarse();
-            seleccion.get(i).entrenar();
-            seleccion.get(i).jugarPartido();
-            seleccion.get(i).viajar();
-            System.out.println(seleccion.get(i).toString());
+      
+        for (SeleccionFutbol sel : seleccion) {
+            JOptionPane.showMessageDialog(null, sel.toString());
+            sel.concentrarse();
+            sel.entrenar();
+            sel.jugarPartido();
+            sel.viajar();
         }
 
     }

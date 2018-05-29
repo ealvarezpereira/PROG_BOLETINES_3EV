@@ -43,15 +43,12 @@ public class MetodosBases {
             if (!texto.equals("")){
             ResultSet resulNumV = st.executeQuery("select numv from ventas where numv = " + texto);
             numV = resulNumV.getString(1);
-            System.out.println("Numventa: " + numV);
             ResultSet resulRefPrd = st.executeQuery("select refProducto from ventas where numv = " + texto);
             refProducto = resulRefPrd.getString(1);
-            System.out.println("refProducto: " + refProducto);
             resulRefPrd.close();
 
             ResultSet resulCant = st.executeQuery("select cantidad from ventas where refProducto = " + "'" + refProducto + "'");
             cantidad = resulCant.getString(1);
-            System.out.println("Cantidad: " + cantidad);
             resulCant.close();
             st.close();
             }else{
@@ -65,15 +62,12 @@ public class MetodosBases {
     public void sacarDatosProducto() {;
         try {
             Statement st = conn.createStatement();
-            System.out.println(refProducto);
             ResultSet resulNom = st.executeQuery("select nombre from producto where refProducto = " + "'" + refProducto + "'");
             nombre = resulNom.getString(1);
-            System.out.println("Nombre: " + nombre);
             resulNom.close();
 
             ResultSet resulRefPrec = st.executeQuery("select refPrecio from producto where refProducto = " + "'" + refProducto + "'");
             refPrecio = resulRefPrec.getString(1);
-            System.out.println("RefPrecio: " + refPrecio);
             resulRefPrec.close();
             st.close();
         } catch (SQLException ex) {
@@ -87,7 +81,6 @@ public class MetodosBases {
 
             ResultSet resulPrecio = st.executeQuery("select precio from precios where refPrecio = " + "'" + refPrecio + "'");
             precio = resulPrecio.getString(1);
-            System.out.println("Precio: " + precio);
             
             resulPrecio.close();
             st.close();

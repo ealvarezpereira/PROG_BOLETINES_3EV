@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,7 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,7 +22,6 @@ import javax.swing.table.DefaultTableModel;
 public class MetodosBases {
 
     Connection conn;
-    ArrayList<String> tablas = new ArrayList<String>();
 
     public void conexionBase() {
 
@@ -36,41 +36,45 @@ public class MetodosBases {
 
     String refProducto, cantidad, nombre, refPrecio, precio, numV;
 
-    public void sacarDatosVentas() {
-
+    public void sacarDatosVentas(String texto) {
+        
         try {
             Statement st = conn.createStatement();
-
-            ResultSet resulNumV = st.executeQuery("select numv from ventas where numv = " + BaseDatos.numventas.getText());
+            if (!texto.equals("")){
+            ResultSet resulNumV = st.executeQuery("select numv from ventas where numv = " + texto);
             numV = resulNumV.getString(1);
-
-            ResultSet resulRefPrd = st.executeQuery("select refProducto from ventas where numv = " + BaseDatos.numventas.getText());
+            System.out.println("Numventa: " + numV);
+            ResultSet resulRefPrd = st.executeQuery("select refProducto from ventas where numv = " + texto);
             refProducto = resulRefPrd.getString(1);
-
+            System.out.println("refProducto: " + refProducto);
             resulRefPrd.close();
 
             ResultSet resulCant = st.executeQuery("select cantidad from ventas where refProducto = " + "'" + refProducto + "'");
             cantidad = resulCant.getString(1);
-
+            System.out.println("Cantidad: " + cantidad);
             resulCant.close();
             st.close();
+            }else{
+                JOptionPane.showMessageDialog(null, "Campo vacío");
+            }
         } catch (SQLException ex) {
             System.out.println("Error en el select de Ventas " + ex);
         }
     }
 
-    public void sacarDatosProducto() {
+    public void sacarDatosProducto() {;
         try {
             Statement st = conn.createStatement();
-
+            System.out.println(refProducto);
             ResultSet resulNom = st.executeQuery("select nombre from producto where refProducto = " + "'" + refProducto + "'");
             nombre = resulNom.getString(1);
+            System.out.println("Nombre: " + nombre);
             resulNom.close();
 
             ResultSet resulRefPrec = st.executeQuery("select refPrecio from producto where refProducto = " + "'" + refProducto + "'");
             refPrecio = resulRefPrec.getString(1);
+            System.out.println("RefPrecio: " + refPrecio);
             resulRefPrec.close();
-
             st.close();
         } catch (SQLException ex) {
             System.out.println("Error en el select de Productos. " + ex);
@@ -83,8 +87,9 @@ public class MetodosBases {
 
             ResultSet resulPrecio = st.executeQuery("select precio from precios where refPrecio = " + "'" + refPrecio + "'");
             precio = resulPrecio.getString(1);
+            System.out.println("Precio: " + precio);
+            
             resulPrecio.close();
-
             st.close();
         } catch (SQLException ex) {
             System.out.println("Error en el select de Precio. " + ex);
@@ -96,8 +101,6 @@ public class MetodosBases {
         BaseDatos bd = new BaseDatos();
 
         try {
-            System.out.println(cantidad);
-            System.out.println(precio);
             PreparedStatement pst = conn.prepareStatement("insert into ticket values(" + numV + "," + "'" + nombre
                     + "'," + "'" + (Integer.parseInt(cantidad) * Integer.parseInt(precio)) + "');");
 
@@ -132,11 +135,10 @@ public class MetodosBases {
 
             st.close();
             rs.close();
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             System.out.println("Error al cargar la tabla. " + ex);
         }
 
-        
         return mimodelo;
 
     }

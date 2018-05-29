@@ -92,17 +92,15 @@ public class BaseDatos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void recargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recargarActionPerformed
-        
         MetodosBases met = new MetodosBases();
         met.conexionBase();
-        met.sacarDatosVentas();
+        met.sacarDatosVentas(numventas.getText());
         met.sacarDatosProducto();
-        met.sacarDatosPrecio();
-        
+        met.sacarDatosPrecio();    
         met.ingresarTicket();
-        
-  
+        numventas.setText(null);
         ticket.setModel(met.recargarTablas());
+
     }//GEN-LAST:event_recargarActionPerformed
 
     /**
@@ -143,7 +141,7 @@ public class BaseDatos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel jLabel1;
     public javax.swing.JScrollPane jScrollPane1;
-    public static javax.swing.JTextField numventas;
+    public javax.swing.JTextField numventas;
     public javax.swing.JButton recargar;
     public javax.swing.JTable ticket;
     // End of variables declaration//GEN-END:variables

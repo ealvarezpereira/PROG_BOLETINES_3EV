@@ -18,11 +18,11 @@ public class Vendedor extends Empregado {
     String areaVenta;
     List<Clientes> listaclientes = new ArrayList<Clientes>();
 
-    public Vendedor(String nombre, String apellidos, String dni, String direccion, String telefono, double salario, Coche c, String areaVenta, ArrayList<Clientes> listaClientes) {
+    public Vendedor(String nombre, String apellidos, String dni, String direccion, String telefono, double salario, Coche c, String areaVenta) {
         super(nombre, apellidos, dni, direccion, telefono, salario);
         this.c = c;
         this.areaVenta = areaVenta;
-        this.listaclientes = listaClientes;
+        
     }
 
     public void altaNuevoCliente() {
@@ -31,6 +31,7 @@ public class Vendedor extends Empregado {
 
     public void bajaCliente() {
 
+        listaclientes.clear();
     }
 
     public void cambiarDeCoche() {
@@ -39,14 +40,12 @@ public class Vendedor extends Empregado {
 
     @Override
     public String imprimir() {
-        return "Coche=" + c + ", areaVenta=" + areaVenta + ", listaclientes=" + listaclientes + ", nombre=" + nombre + ", apellidos=" + apellidos + ", dni=" + dni
-                + ", direccion=" + direccion + ", telefono=" + telefono + ", salario="
-                + salario;
+        return toString();
     }
 
     @Override
     public void incrementarSalario() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        salario = salario + 100.0;
     }
 
     private static class Clientes {

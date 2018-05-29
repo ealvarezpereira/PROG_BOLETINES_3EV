@@ -23,15 +23,13 @@ public class Secretario extends Empregado {
     @Override
     public String imprimir() {
 
-        return  "despacho=" + despacho + ", numFax=" + numFax
-                + ", nombre=" + nombre + ", apellidos=" + apellidos + ", dni=" + dni 
-                + ", direccion=" + direccion + ", telefono=" + telefono + ", salario=" 
-                + salario;
+        return  toString();
     }
 
     @Override
     public void incrementarSalario() {
 
+        salario = salario + 100.0;
         
     }
 

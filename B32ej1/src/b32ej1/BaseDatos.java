@@ -5,6 +5,11 @@
  */
 package b32ej1;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+
 
 /**
  *
@@ -15,8 +20,9 @@ public class BaseDatos extends javax.swing.JFrame {
     /**
      * Creates new form BaseDatos
      */
-    public BaseDatos() {
+    public BaseDatos() throws SQLException {
         initComponents();
+        establecerDatos();
     }
 
     /**
@@ -30,9 +36,9 @@ public class BaseDatos extends javax.swing.JFrame {
 
         recargar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        numventas = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         ticket = new javax.swing.JTable();
+        cbbListaVentas = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,7 +49,7 @@ public class BaseDatos extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Inserta Nº Venta:");
+        jLabel1.setText("Seleccione Nº Venta:");
 
         ticket.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -54,6 +60,8 @@ public class BaseDatos extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(ticket);
+
+        cbbListaVentas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -69,18 +77,18 @@ public class BaseDatos extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(numventas, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbbListaVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(numventas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                    .addComponent(cbbListaVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(recargar)
@@ -91,14 +99,19 @@ public class BaseDatos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void establecerDatos() throws SQLException{
+        MetodosBases met = new MetodosBases();
+        cbbListaVentas.setModel(new DefaultComboBoxModel(met.obtenerNumVentas().toArray()));
+    }
+            
+            
     private void recargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recargarActionPerformed
         MetodosBases met = new MetodosBases();
         met.conexionBase();
-        met.sacarDatosVentas(numventas.getText());
+        met.sacarDatosVentas(cbbListaVentas.getSelectedItem().toString());
         met.sacarDatosProducto();
         met.sacarDatosPrecio();    
         met.ingresarTicket();
-        numventas.setText(null);
         ticket.setModel(met.recargarTablas());
 
     }//GEN-LAST:event_recargarActionPerformed
@@ -133,15 +146,19 @@ public class BaseDatos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BaseDatos().setVisible(true);
+                try {
+                    new BaseDatos().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JComboBox<String> cbbListaVentas;
     public javax.swing.JLabel jLabel1;
     public javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTextField numventas;
     public javax.swing.JButton recargar;
     public javax.swing.JTable ticket;
     // End of variables declaration//GEN-END:variables

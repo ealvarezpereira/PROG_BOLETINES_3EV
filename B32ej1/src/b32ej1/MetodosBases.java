@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -36,22 +37,35 @@ public class MetodosBases {
 
     String refProducto, cantidad, nombre, refPrecio, precio, numV;
 
+    public ArrayList<String> obtenerNumVentas() throws SQLException {
+        conexionBase();
+        ArrayList<String> ventas = new ArrayList<String>();
+        Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery("SELECT numv FROM ventas");
+        int i = 1;
+        while (rs.next()) {
+            ventas.add(rs.getString(1));
+            i++;
+        }
+        return ventas;
+    }
+
     public void sacarDatosVentas(String texto) {
-        
+
         try {
             Statement st = conn.createStatement();
-            if (!texto.equals("")){
-            ResultSet resulNumV = st.executeQuery("select numv from ventas where numv = " + texto);
-            numV = resulNumV.getString(1);
-            ResultSet resulRefPrd = st.executeQuery("select refProducto from ventas where numv = " + texto);
-            refProducto = resulRefPrd.getString(1);
-            resulRefPrd.close();
+            if (!texto.equals("")) {
+                ResultSet resulNumV = st.executeQuery("select numv from ventas where numv = " + texto);
+                numV = resulNumV.getString(1);
+                ResultSet resulRefPrd = st.executeQuery("select refProducto from ventas where numv = " + texto);
+                refProducto = resulRefPrd.getString(1);
+                resulRefPrd.close();
 
-            ResultSet resulCant = st.executeQuery("select cantidad from ventas where refProducto = " + "'" + refProducto + "'");
-            cantidad = resulCant.getString(1);
-            resulCant.close();
-            st.close();
-            }else{
+                ResultSet resulCant = st.executeQuery("select cantidad from ventas where refProducto = " + "'" + refProducto + "'");
+                cantidad = resulCant.getString(1);
+                resulCant.close();
+                st.close();
+            } else {
                 JOptionPane.showMessageDialog(null, "Campo vacío");
             }
         } catch (SQLException ex) {
@@ -81,7 +95,7 @@ public class MetodosBases {
 
             ResultSet resulPrecio = st.executeQuery("select precio from precios where refPrecio = " + "'" + refPrecio + "'");
             precio = resulPrecio.getString(1);
-            
+
             resulPrecio.close();
             st.close();
         } catch (SQLException ex) {
@@ -91,7 +105,6 @@ public class MetodosBases {
 
     public void ingresarTicket() {
 
-        BaseDatos bd = new BaseDatos();
 
         try {
             PreparedStatement pst = conn.prepareStatement("insert into ticket values(" + numV + "," + "'" + nombre
